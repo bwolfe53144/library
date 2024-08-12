@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <!DOCTYPE html>
@@ -11,17 +11,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Form Values Example</title>
+    <title>Library</title>
 </head>
 <body>
     <input type="button" class="addBook" onclick="openForm()" value="Add Book" />
     <form id="myForm">
-        <p>Max of 30 characters</p>
+        <p>Max 30 characters</p>
         <!-- Your form elements go here -->
         <input type="text" name="title" id="title" placeholder="Book Title..." required maxlength="30">
         <input type="text" name="author" id="author" placeholder="Author..." required maxlength="30">
         <input type="number" name="pages" id="pages" placeholder="Number of Pages..." required max="1000">
-        <input type="text" name="status" id="status" placeholder="Did You Read This Book?" required maxlength="3">
+        <label for="read">Read</label>
+        <select name="status" id="status" required>
+            <option value="yes">Yes</option>
+            <option value="no" selected>No</option>
+        </select>
         <button type="submit">Submit</button>
         <button type="button" onclick="closeForm()">Hide</button>
     </form>
