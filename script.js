@@ -1,15 +1,14 @@
+/*Set up the library before user interaction*/
 var myLibrary = [];
+const bookOne = new Book("Catcher in the Rye", "J D Salinger", "277", "no");
+const bookTwo = new Book("Animal Farm", "George Orwell", "122", "yes");
+const bookThree = new Book("The Outsiders", "S. E. Hinton", "208", "no");
+const bookFour = new Book("The Grapes of Wrath", "John Steinbeck", "464", "yes");
+myLibrary.push(bookOne, bookTwo, bookThree, bookFour);
+displayBooks(myLibrary);
 
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
-}
-
+/*Add the form*/
 const form = document.getElementById('myForm');                    
-
-// Add a form submit event listener
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
 
@@ -22,15 +21,14 @@ form.addEventListener('submit', function(event) {
     myLibrary.push(book);
     closeForm();
     displayBooks(myLibrary);
-
 });
 
+/*Function to open and close the form, and setting default to close*/
 function openForm() {
     document.getElementById("myForm").style.display = "block";
-    
-  }
+}
   
-  function closeForm() {
+function closeForm() {
     document.getElementById("myForm").style.display = "none";
     form.elements.title.value = "";
     form.elements.author.value = "";
@@ -40,6 +38,14 @@ function openForm() {
 
 closeForm();
 
+/*Function to create a book*/
+function Book(title, author, pages, status) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.status = status;
+}
+/*Function to display books in the array to the page*/
 function displayBooks(r) {
     document.querySelectorAll('newBook').forEach(e => e.remove());
     document.querySelectorAll('btn').forEach(e => e.remove());
@@ -82,10 +88,10 @@ function displayBooks(r) {
         placeHolder.appendChild(btn);
         placeHolder.appendChild(readbtn);
         placeHolder.appendChild(unreadbtn);
-
     }
 }
 
+/*Functions for the buttons to remove the book or mark as read or unread*/
 function removeBook(a) {
     notLibrary = myLibrary.splice(a,1);
     displayBooks(myLibrary);
@@ -104,17 +110,3 @@ function unreadBook(a) {
         displayBooks(myLibrary);
     }
 }
-
-
-
-
-const bookOne = new Book("Catcher in the Rye", "J D Salinger", "277", "no");
-const bookTwo = new Book("Animal Farm", "George Orwell", "122", "yes");
-const bookThree = new Book("The Outsiders", "S. E. Hinton", "208", "no");
-const bookFour = new Book("The Grapes of Wrath", "John Steinbeck", "464", "yes");
-myLibrary.push(bookOne, bookTwo, bookThree, bookFour);
-displayBooks(myLibrary);
-
-
-
-
